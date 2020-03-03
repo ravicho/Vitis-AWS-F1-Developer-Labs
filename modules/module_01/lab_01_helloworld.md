@@ -21,7 +21,7 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 
     ```bash
     cd ~/src/project_data/aws-fpga
-    source sdaccel_setup.sh
+    source vitis_setup.sh
     cd ~
     ```
 	*Note: the sdaccel_setup.sh script might generate warning messages, but these can be safely ignored.*
@@ -30,7 +30,7 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 
     ```bash
     # Go to the lab directory
-    cd ~/SDAccel-AWS-F1-Developer-Labs/modules/module_01/helloworld
+    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/helloworld
 
     # Compile the host application (./helloworld)
     make compile_host
