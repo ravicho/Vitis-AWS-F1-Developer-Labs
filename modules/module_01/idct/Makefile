@@ -53,7 +53,7 @@ CXXFLAGS += -D__USE_XOPEN2K8
 CXXFLAGS += -I$(XILINX_XRT)/include/
 CXXFLAGS += -I$(XILINX_VIVADO)/include/
 CXXFLAGS += -I$(SRC_REPO)
-CXXFLAGS += -O0 -g -Wall -fmessage-length=0 -std=c++14
+CXXFLAGS += -O0 -g -Wall -fmessage-length=0 -std=c++11
 
 CXXLDFLAGS := -L$(XILINX_XRT)/lib/
 CXXLDFLAGS += -lxilinxopencl -lpthread -lrt
@@ -61,13 +61,12 @@ CXXLDFLAGS += -lxilinxopencl -lpthread -lrt
 
 ## Kernel Compiler and Linker Flags
 
-XOCCFLAGS := -t $(TARGET)
-XOCCFLAGS += --platform $(PLATFORM) -R1 --save-temps
-XOCCFLAGS += --nk krnl_idct:1
-XOCCFLAGS += --temp_dir $(BUILD_DIR)
-XOCCFLAGS += --log_dir $(BUILD_DIR)
-XOCCFLAGS += --profile_kernel data:all:all:all:all
-XOCCFLAGS += --sp krnl_idct_1.m_axi_gmem:bank0 --sp krnl_idct_1.m_axi_gmem1:bank0 --sp krnl_idct_1.m_axi_gmem2:bank1
+VPPFLAGS := -t $(TARGET)
+VPPFLAGS += --platform $(PLATFORM) -R1 --save-temps
+VPPFLAGS += --temp_dir $(BUILD_DIR)
+VPPFLAGS += --log_dir $(BUILD_DIR)
+VPPFLAGS += --profile_kernel data:all:all:all:all
+VPPFLAGS += --config link.cfg
 
 ## Host Executable File Generation
 
@@ -75,18 +74,18 @@ compile_host: $(BUILD_DIR)/$(HOST_EXE)
 
 $(BUILD_DIR)/$(HOST_EXE): $(HOST_SRC_CPP)
 	mkdir -p $(BUILD_DIR)
-	xcpp $(CXXFLAGS) $(CXXLDFLAGS) -o $@ $(HOST_SRC_CPP)
+	g++ $(CXXFLAGS) $(CXXLDFLAGS) -o $@ $(HOST_SRC_CPP)
 
 ## Kernel XO and Xclbin File Generation
 
 $(BUILD_DIR)/$(XO_NAME).xo: $(KERNEL_SRC_CPP)
 	mkdir -p $(BUILD_DIR)
-	xocc $(XOCCFLAGS) -c -k krnl_idct $(KERNEL_SRC_CPP) -o $@
+	v++ $(VPPFLAGS) -c -k krnl_idct $(KERNEL_SRC_CPP) -o $@
 
 $(BUILD_DIR)/$(XCLBIN): $(BUILD_DIR)/$(XO_NAME).xo
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(BUILD_DIR)/$(TARGET)
-	xocc $(XOCCFLAGS) -l -o $@ $(BUILD_DIR)/$(XO_NAME).xo
+	v++ $(VPPFLAGS) -l -o $@ $(BUILD_DIR)/$(XO_NAME).xo
 
 ## Emulation Files Generation
 
@@ -113,8 +112,6 @@ ifeq ($(TARGET), hw)
 else
 	cd $(BUILD_DIR) && XCL_EMULATION_MODE=$(TARGET) ./IDCT.exe  ./$(XCLBIN) ;
 endif
-	@cd $(BUILD_DIR) && mv ./profile_summary.csv profile_summary_$(TARGET).csv;
-	@cd $(BUILD_DIR) && mv ./timeline_trace.csv timeline_trace_$(TARGET).csv;
 	
 ## Clean generated files
 
