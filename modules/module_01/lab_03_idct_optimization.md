@@ -31,12 +31,12 @@ Remember when we Looked at the **HLS Report**, we identified that the read, exec
 1. Save the file.
 
 1. Clean the generated files before launching hardware emulation with updated source file.
-    ```
+    ```bash
     make clean
     ```
 
 1. Rerun hardware emulation.
-    ```
+    ```bash
     make run TARGET=hw_emu
     ```
 
@@ -142,7 +142,7 @@ For optimal performance both the hardware and software components of the applica
 
 
 1. Execute the following command to to convert the timeline trace to wdb format and then load timeline trace in Vitis GUI. You may need to close the previous opened Vitis GUI.
-   ```
+   ```bash
    cd build;
    vitis_analyzer timeline_trace_hw_emu.csv 
    ```
@@ -190,7 +190,7 @@ For optimal performance both the hardware and software components of the applica
 
 1. Convert the newly generated application timeline report
 
-   ```
+   ```bash
    cd build;
    vitis_analyzer timeline_trace_hw_emu.csv 
    ```
