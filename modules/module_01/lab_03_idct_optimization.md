@@ -1,6 +1,6 @@
 ## Optimizing F1 applications
 
-This lab builds on the previous one ([Using XOCC command line flow to develop and compile F1 accelerator](lab_02_idct.md)) which gave an overview of the Vitis development environment and explained the various performance analysis capabilities provided by the tool. In this lab you will utilize these analysis capabilities to drive and measure code optimizations. This lab illustrates the DATAFLOW optimization for the kernel and software pipelining for the host application.
+This lab builds on the previous one ([Using v++ command line flow to develop and compile F1 accelerator](lab_02_idct.md)) which gave an overview of the Vitis development environment and explained the various performance analysis capabilities provided by the tool. In this lab you will utilize these analysis capabilities to drive and measure code optimizations. This lab illustrates the DATAFLOW optimization for the kernel and software pipelining for the host application.
 
 Please note that although the entire lab is performed on an F1 instance, only the final step of this lab really needs to be run on F1. All the interactive development, profiling and optimization steps would normally be performed on-premise or on a cost-effective AWS EC2 instance such as C4. However, to avoid switching from C4 to F1 instances during this lab, all the steps are performed on the F1 instance.
 
@@ -112,10 +112,11 @@ These steps would take too long to complete during this lab, therefore a precomp
 
 1. Here is the output of the above comamnd 
    ```
-   CPU Time:        2.38773 s
-   CPU Throughput:  214.43 MB/s
-   FPGA Time:       0.431608 s
-   FPGA Throughput: 1186.26 MB/s
+   TEST PASSED
+   CPU Time:        2.41084 s
+   CPU Throughput:  212.374 MB/s
+   FPGA Time:       1.35336 s
+   FPGA Throughput: 378.319 MB/s
    ```
 
 Note the performance difference between the IDCT running on the CPU and on the FPGA. FPGA s about 5x faster than running on CPU. 
@@ -142,8 +143,8 @@ For optimal performance both the hardware and software components of the applica
 
 1. Execute the following command to to convert the timeline trace to wdb format and then load timeline trace in Vitis GUI. You may need to close the previous opened Vitis GUI.
    ```
-   sdx_analyze trace -f wdb -i ./timeline_trace.csv
-   sdx -workspace tmp --report timeline_trace.wdb
+   cd build;
+   vitis_analyzer timeline_trace_hw_emu.csv 
    ```
 
 1. Zoom in by performing a **Left mouse drag** to get a more detailed view.  
@@ -174,7 +175,7 @@ For optimal performance both the hardware and software components of the applica
 	- This technique is called **software pipelining**.
 
 1. Modify line 153 to increase the value of **NUM_SCHED** to 6 as follows:
-    ```C
+    ```
     #define NUM_SCHED 6
     ```
 
@@ -189,12 +190,10 @@ For optimal performance both the hardware and software components of the applica
 
 1. Convert the newly generated application timeline report
 
-    ```bash
-    cd build;
-    sdx_analyze trace -i timeline_trace_hw_emu.csv -f wdb
-    sdx -workspace tmp --report timeline_trace_hw_emu.wdb
-
-    ```
+   ```
+   cd build;
+   vitis_analyzer timeline_trace_hw_emu.csv 
+   ```
 
 1. Open the timeline_trace_hw_emu.wdb file in the GUI. Observe how **software pipelining** enables overlapping of data transfers and kernel execution.
 
@@ -219,10 +218,12 @@ The next step is to confirm these results by running on the FPGA attached to the
     ```
 1. Here is the output of the above comamnd 
    ```
-   CPU Time:        2.38849 s
-   CPU Throughput:  214.361 MB/s
-   FPGA Time:       0.23884 s
-   FPGA Throughput: 2143.7 MB/s
+   TEST PASSED
+   CPU Time:        2.40326 s
+   CPU Throughput:  213.044 MB/s
+   FPGA Time:       0.587663 s
+   FPGA Throughput: 871.248 MB/s
+
    ```
    Note the performance difference between the IDCT running on the CPU and on the FPGA. FPGA s about 10x faster than running on CPU. Note as well the performance difference with the previous run on F1. Using exactly the same FPGA binary but an optimized host application, the overall performance is significantly improved.
 
