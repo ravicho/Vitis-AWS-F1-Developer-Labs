@@ -1,13 +1,13 @@
 ## Optimizing F1 applications
 
-This lab builds on the previous one ([Using XOCC command line flow to develop and compile F1 accelerator](lab_02_idct.md)) which gave an overview of the SDAccel development environment and explained the various performance analysis capabilities provided by the tool. In this lab you will utilize these analysis capabilities to drive and measure code optimizations. This lab illustrates the DATAFLOW optimization for the kernel and software pipelining for the host application.
+This lab builds on the previous one ([Using XOCC command line flow to develop and compile F1 accelerator](lab_02_idct.md)) which gave an overview of the Vitis development environment and explained the various performance analysis capabilities provided by the tool. In this lab you will utilize these analysis capabilities to drive and measure code optimizations. This lab illustrates the DATAFLOW optimization for the kernel and software pipelining for the host application.
 
 Please note that although the entire lab is performed on an F1 instance, only the final step of this lab really needs to be run on F1. All the interactive development, profiling and optimization steps would normally be performed on-premise or on a cost-effective AWS EC2 instance such as C4. However, to avoid switching from C4 to F1 instances during this lab, all the steps are performed on the F1 instance.
 
 If you have closed the terminal window at the end of the previous lab, open a new one and go back to the project folder:
 
 ```bash
-cd ~/SDAccel-AWS-F1-Developer-Labs/modules/module_01/idct
+cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
 ```
 
 ### Optimizing the IDCT kernel
@@ -53,10 +53,10 @@ Remember when we Looked at the **HLS Report**, we identified that the read, exec
 The next step is to create an FPGA binary to test the optimized kernel on the FPGA attached to the F1 instance.
 
 Creating the FPGA binary is a two-step process:
-* First SDAccel is used to build the Xilinx FPGA binary (.xclbin file).
-* Then the AWS **create_sdaccel_afi.sh** script is used to create the AWS FPGA binary (.awsxclbin file) and register a secured and encrypted Amazon FPGA Image (AFI).
+* First Vitis is used to build the Xilinx FPGA binary (.xclbin file).
+* Then the AWS **create_Vitis_afi.sh** script is used to create the AWS FPGA binary (.awsxclbin file) and register a secured and encrypted Amazon FPGA Image (AFI).
 
-The **create_sdaccel_afi.sh** script does the following:
+The **create_Vitis_afi.sh** script does the following:
 * Starts a background process to create the AFI
 * Generates a \<timestamp\>_afi_id.txt which contains the FPGA Image Identifier (or AFI ID) and Global FPGA Image Identifier (or AGFI ID) of the generated AFI
 * Creates the *.awsxclbin AWS FPGA binary file which is read by the host application to determine which AFI should be loaded in the FPGA.
@@ -69,7 +69,7 @@ These steps would take too long to complete during this lab, therefore a precomp
 
     ```bash
     # Go the lab folder
-    cd ~/SDAccel-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
 
     # List contents of the ./xclbin directory to look for the .awsxclbin FPGA binary
     ls -la ./xclbin
@@ -101,9 +101,9 @@ These steps would take too long to complete during this lab, therefore a precomp
 1. Execute the accelerated application on F1 using the precompiled FPGA binary.
 
     ```bash
-    cd ~/SDAccel-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     sudo sh
-    # Source the SDAccel runtime environment
+    # Source the Vitis runtime environment
     source /opt/xilinx/xrt/setup.sh
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
@@ -140,7 +140,7 @@ For optimal performance both the hardware and software components of the applica
 	These OpenCL functions use events to signal their completion and synchronize execution.
 
 
-1. Execute the following command to to convert the timeline trace to wdb format and then load timeline trace in SDAccel GUI. You may need to close the previous opened SDAccel GUI.
+1. Execute the following command to to convert the timeline trace to wdb format and then load timeline trace in Vitis GUI. You may need to close the previous opened Vitis GUI.
    ```
    sdx_analyze trace -f wdb -i ./timeline_trace.csv
    sdx -workspace tmp --report timeline_trace.wdb
@@ -209,9 +209,9 @@ The next step is to confirm these results by running on the FPGA attached to the
 1. Execute the accelerated application on F1 using the precompiled FPGA binary.
     
     ```bash
-    cd ~/SDAccel-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     sudo sh
-    # Source the SDAccel runtime environment
+    # Source the Vitis runtime environment
     source /opt/xilinx/xrt/setup.sh
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
@@ -230,7 +230,7 @@ The next step is to confirm these results by running on the FPGA attached to the
 ### Summary  
 
 In this lab, you learned:
-* How to use the various reports generated by SDAccel to drive optimization decisions
+* How to use the various reports generated by Vitis to drive optimization decisions
 * How to use pragmas to increase kernel performance
 * How to use software pipelining to increase system performance
  
