@@ -21,7 +21,7 @@ TARGET := sw_emu
 ## Please keep it unchanged.
 HOST_EXE := helloworld
 XO_NAME := vector_addition_$(TARGET)
-XCLBIN := vector_addition_$(TARGET).xclbin
+XCLBIN := vector_addition_$(TARGET).awsxclbin
 
 
 ## BUILD_DIR are used for the generated files, including .exe, .xclbin, and the reports/logs. BUILD_DIR selection should be matched to SRC_REPO for better structure.
@@ -112,7 +112,7 @@ compile_host: $(BUILD_DIR)/$(HOST_EXE)
 ## build the design and then run host application
 ## run with 512x10 input video format for emulation and 1280x720 for hardware
 
-run: build
+run: compile_host
 	./$(HOST_EXE)  ./xclbin/$(XCLBIN) ;
 
 
