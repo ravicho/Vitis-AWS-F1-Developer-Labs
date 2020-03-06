@@ -102,9 +102,7 @@ These steps would take too long to complete during this lab, therefore a precomp
 
     ```bash
     cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
-    sudo sh
-    # Source the Vitis runtime environment
-    source /opt/xilinx/xrt/setup.sh
+    source vitis_runtime_setup.sh 
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
     exit
@@ -209,9 +207,7 @@ The next step is to confirm these results by running on the FPGA attached to the
     
     ```bash
     cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
-    sudo sh
-    # Source the Vitis runtime environment
-    source /opt/xilinx/xrt/setup.sh
+    source vitis_runtime_setup.sh 
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
     exit
