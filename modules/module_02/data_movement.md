@@ -59,8 +59,7 @@ The accelerator is architected to process 8 words in parallel at 250Mhz. In the 
 2. Run the following command to look at the Profile Summary Report.
 
     ```bash
-    sdx_analyze  profile  -f html -i ./profile_summary.csv
-    firefox profile_summary.html
+    vitis_analyzer profile_summary.csv
     ```
 
 *  Looking at the *Kernel Execution* section in the report, we see the kernel execution time as 175.173 ms.
@@ -75,8 +74,7 @@ The accelerator is architected to process 8 words in parallel at 250Mhz. In the 
 1. Run the following commands to view the Timeline Trace report.
 
     ```bash
-    sdx_analyze trace -f wdb -i ./timeline_trace.csv
-    sdx -workspace workspace -report timeline_trace.wdb
+    vitis_analyzer timeline_trace.csv
     ```
 
 2. Zoom in to display the timeline trace report as follows:
@@ -252,8 +250,7 @@ f. The host waits until the output is read back from the FPGA.
 2. Run the following commands to view the Timeline Trace report.
 
     ```bash
-    sdx_analyze trace -f wdb -i ./timeline_trace.csv
-    sdx -workspace workspace -report timeline_trace.wdb
+    vitis_analyzer timeline_trace.csv
     ```
 
 3. Zoom in to display the timeline trace report as follows:
@@ -422,8 +419,7 @@ e. The host waits until the output of each iteration is read back to the host.
 2. Run the following commands to look at Timeline Trace report.
 
     ```bash
-    sdx_analyze trace -f wdb -i ./timeline_trace.csv
-    sdx -workspace workspace -report timeline_trace.wdb
+    vitis_analyzer timeline_trace.csv
     ```
 
 3. Zoom in to display the timeline trace report as follows.
@@ -538,8 +534,7 @@ b. Block the host only if the hash function of the words are still not computed 
 2. Run the following commands to view the Timeline Trace report.
 
     ```bash
-    sdx_analyze trace -f wdb -i ./timeline_trace.csv
-    sdx -workspace workspace -report timeline_trace.wdb
+    vitis_analyzer timeline_trace.csv
     ```
 
 3. Zoom in to display the timeline trace report as follows.
