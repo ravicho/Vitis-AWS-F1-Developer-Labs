@@ -44,12 +44,11 @@ setup:
 
 build: host
 
-run: build setup
+run: build 
 	mkdir -p $(BUILDDIR)
 	cp runOnfpga_hw.awsxclbin $(BUILDDIR)
 	cp xrt.ini $(BUILDDIR)
-	sudo -E -- bash -c 'fpga-clear-local-image -S 0'
-	sudo -E -- bash -c 'source /opt/xilinx/xrt/setup.sh && cd $(BUILDDIR) && ./host 100000 $(ITER) '
+	cd $(BUILDDIR) && ./host 100000 $(ITER)
 	 
 
 help:
