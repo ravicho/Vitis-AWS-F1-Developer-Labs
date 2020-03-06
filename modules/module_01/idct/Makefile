@@ -100,8 +100,7 @@ $(BUILD_DIR)/$(EMCONFIG_FILE):
 
 ## build the design without running host application
 
-#build: $(BUILD_DIR)/$(HOST_EXE) $(BUILD_DIR)/$(XCLBIN) $(BUILD_DIR)/$(EMCONFIG_FILE)
-build: $(BUILD_DIR)/$(HOST_EXE)  $(BUILD_DIR)/$(EMCONFIG_FILE)
+build: $(BUILD_DIR)/$(HOST_EXE) $(BUILD_DIR)/$(XCLBIN) $(BUILD_DIR)/$(EMCONFIG_FILE)
 
 ## build the design and then run host application
 
