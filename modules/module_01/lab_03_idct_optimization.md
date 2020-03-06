@@ -101,10 +101,9 @@ These steps would take too long to complete during this lab, therefore a precomp
 1. Execute the accelerated application on F1 using the precompiled FPGA binary.
 
     ```bash
+    source ~/aws-fpga/vitis_runtime_setup.sh 
     cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
-    sudo sh
-    # Source the Vitis runtime environment
-    source /opt/xilinx/xrt/setup.sh
+    
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
     exit
@@ -208,10 +207,9 @@ The next step is to confirm these results by running on the FPGA attached to the
 1. Execute the accelerated application on F1 using the precompiled FPGA binary.
     
     ```bash
+    source ~/aws-fpga/vitis_runtime_setup.sh 
     cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
-    sudo sh
-    # Source the Vitis runtime environment
-    source /opt/xilinx/xrt/setup.sh
+    
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
     exit
