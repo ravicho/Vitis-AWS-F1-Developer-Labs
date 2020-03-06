@@ -23,9 +23,8 @@ git clone https://github.com/Xilinx/SDAccel-AWS-F1-Developer-Labs.git SDAccel-AW
 
 ### Setup for running application on FPGA
 ```
-sudo sh
-# Source the SDAccel runtime environment
-source /opt/xilinx/xrt/setup.sh
+# Source the Vitis runtime environment
+source ~/aws-fpga/vitis_runtime_setup.sh 
 ```
 
 ### Module overview

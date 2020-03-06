@@ -33,7 +33,7 @@ TARGET := sw_emu
 ## Please keep it unchanged.
 HOST_EXE := IDCT.exe
 XO_NAME := krnl_idct.$(TARGET)
-XCLBIN := krnl_idct.$(TARGET).xclbin
+XCLBIN := krnl_idct.$(TARGET).awsxclbin
 
 SRC_REPO := ./src
 BUILD_DIR := ./build
@@ -100,7 +100,8 @@ $(BUILD_DIR)/$(EMCONFIG_FILE):
 
 ## build the design without running host application
 
-build: $(BUILD_DIR)/$(HOST_EXE) $(BUILD_DIR)/$(XCLBIN) $(BUILD_DIR)/$(EMCONFIG_FILE)
+#build: $(BUILD_DIR)/$(HOST_EXE) $(BUILD_DIR)/$(XCLBIN) $(BUILD_DIR)/$(EMCONFIG_FILE)
+build: $(BUILD_DIR)/$(HOST_EXE)  $(BUILD_DIR)/$(EMCONFIG_FILE)
 
 ## build the design and then run host application
 
@@ -112,6 +113,9 @@ ifeq ($(TARGET), hw)
 else
 	cd $(BUILD_DIR) && XCL_EMULATION_MODE=$(TARGET) ./IDCT.exe  ./$(XCLBIN) ;
 endif
+	@cd $(BUILD_DIR) && mv ./profile_summary.csv profile_summary_$(TARGET).csv;
+	@cd $(BUILD_DIR) && mv ./timeline_trace.csv timeline_trace_$(TARGET).csv;
+	
 	
 ## Clean generated files
 
