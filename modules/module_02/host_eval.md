@@ -193,7 +193,7 @@ For the purposes of this lab, we have implemented the FPGA accelerator with an 8
 1. Run the following make command for running optimized application on FPGA
 
    ```bash
-   source vitis_runtime_setup.sh 
+   source ~/aws-fpga/vitis_runtime_setup.sh
    make run_fpga
    ```
 
