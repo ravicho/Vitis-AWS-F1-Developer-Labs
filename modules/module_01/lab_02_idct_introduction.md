@@ -125,6 +125,7 @@ After the emulation run completes, an profile_summary_hw_emu.csv file is generat
 
 Open the generated profile summary report generated
 ```
+cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/build;
 vitis_analyzer profile_summary_hw_emu
 ```
 
@@ -175,6 +176,8 @@ In addition to the profile_summary_hw_emu.csv file, the emulation run also gener
 
 Open the generated profile summary report generated
 ```
+
+cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/build;
 vitis_analyzer timeline_trace_hw_emu.csv 
 ```
 
