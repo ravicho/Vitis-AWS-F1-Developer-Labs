@@ -46,6 +46,7 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 
     ```bash
     source ~/aws-fpga/vitis_runtime_setup.sh 
+    make run TARGET=hw
     ```
 
 1. The host application executes using the vector_addition kernel running in the FPGA and produces the following results:
