@@ -103,11 +103,7 @@ These steps would take too long to complete during this lab, therefore a precomp
     ```bash
     source ~/aws-fpga/vitis_runtime_setup.sh 
     cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
-<<<<<<< HEAD
     source vitis_runtime_setup.sh 
-=======
-    
->>>>>>> 747cb68d936c3c06fa5036d1f68206f8b6a89996
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
     exit
@@ -116,10 +112,10 @@ These steps would take too long to complete during this lab, therefore a precomp
 1. Here is the output of the above comamnd 
    ```
    TEST PASSED
-   CPU Time:        2.41084 s
-   CPU Throughput:  212.374 MB/s
-   FPGA Time:       1.35336 s
-   FPGA Throughput: 378.319 MB/s
+   CPU Time:        2.40586 s
+   CPU Throughput:  212.813 MB/s
+   FPGA Time:       0.472643 s
+   FPGA Throughput: 1083.27 MB/s
    ```
 
 Note the performance difference between the IDCT running on the CPU and on the FPGA. FPGA s about 5x faster than running on CPU. 
@@ -225,11 +221,10 @@ The next step is to confirm these results by running on the FPGA attached to the
 1. Here is the output of the above comamnd 
    ```
    TEST PASSED
-   CPU Time:        2.40326 s
-   CPU Throughput:  213.044 MB/s
-   FPGA Time:       0.587663 s
-   FPGA Throughput: 871.248 MB/s
-
+   CPU Time:        2.40458 s
+   CPU Throughput:  212.927 MB/s
+   FPGA Time:       0.268666 s
+   FPGA Throughput: 1905.71 MB/s
    ```
    Note the performance difference between the IDCT running on the CPU and on the FPGA. FPGA s about 10x faster than running on CPU. Note as well the performance difference with the previous run on F1. Using exactly the same FPGA binary but an optimized host application, the overall performance is significantly improved.
 
