@@ -6,25 +6,23 @@ Skip this step if the SDAccel environment is already setup.
 
 Before starting this module, perform a fresh reinstall of the AWS EC2 FPGA Development Kit and download the lab contents on your instance. Open a new terminal by right-clicking anywhere in the Desktop area and selecting **Open Terminal**, then run the following commands:
 
-```
+```bash  
 # Install the AWS EC2 FPGA Development Kit
-cd ~
-git clone https://github.com/aws/aws-fpga.git
-cd aws-fpga                                   
-source sdaccel_setup.sh
+cd $AWS_FPGA_REPO_DIR
+git clone https://github.com/aws/aws-fpga.git  
+cd $AWS_FPGA_REPO_DIR/aws-fpga                                         
+source vitis_setup.sh
 
-# Download the SDAccel F1 Developer Labs
-cd ~
-rm -rf SDAccel-AWS-F1-Developer-Labs
-git clone https://github.com/Xilinx/SDAccel-AWS-F1-Developer-Labs.git SDAccel-AWS-F1-Developer-Labs
+# Download the Vitis F1 Developer Labs
+cd $AWS_FPGA_REPO_DIR/
+rm -rf Vitis-AWS-F1-Developer-Labs
+git clone https://github.com/Xilinx/Vitis-AWS-F1-Developer-Labs.git Vitis-AWS-F1-Developer-Labs
 ```
-
-
 
 ### Setup for running application on FPGA
 ```
 # Source the Vitis runtime environment
-source ~/aws-fpga/vitis_runtime_setup.sh 
+source $AWS_FPGA_REPO_DIR/aws-fpga/vitis_runtime_setup.sh 
 ```
 
 ### Module overview

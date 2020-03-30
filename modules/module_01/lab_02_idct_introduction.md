@@ -12,7 +12,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 1.  Set up the Vitis environment.  
 
     ```bash
-    cd ~/src/project_data/aws-fpga
+    cd $AWS_FPGA_REPO_DIR/aws-fpga
     source Vitis_setup.sh
     ```
 	*Note: the Vitis_setup.sh script might generate warning messages, but these can be safely ignored.*
@@ -20,7 +20,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 1.  Go to design folder and investigate the files.
     ```bash
     # Go to the lab directory
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     ls
     ```
 	  The `src` folder contains the kernel source file and host code. The `Makefile` is provided for design compilation and execution. Let's open up the make file and take a look at its contents.
@@ -84,6 +84,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 
 1. Run below commands in the terminal window.
     ```bash
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     make run TARGET=sw_emu
     ```
     This will run through software emulation and print out messages as shown in below to indicate the process finishes successfully.
@@ -97,6 +98,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 
 1. After software emulation finishes successfully, you can move forward to run the design in hardware emulation. The corresponding command is:
     ```bash
+    $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     make run TARGET=hw_emu
     ```
 
@@ -125,7 +127,6 @@ After the emulation run completes, an profile_summary_hw_emu.csv file is generat
 
 Open the generated profile summary report generated
 ```
-cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/build;
 vitis_analyzer profile_summary_hw_emu
 ```
 
@@ -155,6 +156,7 @@ The Vitis v++ compiler also generates **HLS Reports** for each kernel. **HLS Rep
 
 1. Locate the HLS reports:
 ```
+$AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
 find . -name "*_csynth.rpt"
 ```
 
@@ -176,8 +178,6 @@ In addition to the profile_summary_hw_emu.csv file, the emulation run also gener
 
 Open the generated profile summary report generated
 ```
-
-cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/build;
 vitis_analyzer timeline_trace_hw_emu.csv 
 ```
 

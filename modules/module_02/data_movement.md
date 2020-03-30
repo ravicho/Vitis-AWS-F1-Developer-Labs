@@ -31,7 +31,7 @@ The accelerator is architected to process 8 words in parallel at 250Mhz. In the 
 1. Go to the `makefile` directory and run the make command.
 
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
     make run STEP=single_buffer SOLUTION=1
     ```
 
@@ -53,7 +53,7 @@ The accelerator is architected to process 8 words in parallel at 250Mhz. In the 
 1. Change your working directory to `modules/module_02/build/single_buffer`.
 
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/single_buffer
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/single_buffer
     ```
    
 2. Run the following command to look at the Profile Summary Report.
@@ -105,7 +105,7 @@ To improve performance, you can split and send the input buffer in multiple iter
 
 1. Change your working directory to `modules/module_02/reference_files`.
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/reference_files
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/reference_files
     ```
 2. Open `run_split_buffer.cpp` file with a file editor.
 
@@ -226,7 +226,7 @@ f. The host waits until the output is read back from the FPGA.
 1. Go to the `makefile` directory and run the `make` command.
 
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
     make run STEP=split_buffer SOLUTION=1
     ```
 
@@ -244,7 +244,7 @@ f. The host waits until the output is read back from the FPGA.
 1. Change your working directory to `modules/module_02/build/split_buffer`.
 
    ```bash
-   cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/split_buffer
+   cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/split_buffer
    ```
    
 2. Run the following commands to view the Timeline Trace report.
@@ -276,7 +276,7 @@ In the previous step, you split the input buffer into two sub-buffers and overla
 1. Change your working directory to `modules/module_02/reference_files`.
 
    ```bash
-   cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/reference_files
+   cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/reference_files
    ```
 
 2. Open `run_generic_buffer.cpp` file with a file editor.
@@ -386,7 +386,7 @@ e. The host waits until the output of each iteration is read back to the host.
 1. Go to the `makefile` directory and run the `make` command.
  
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
     make run STEP=generic_buffer ITER=16 SOLUTION=1
     ```
    The argument `ITER` represents the number of iterations of data transfer from host to FPGA.
@@ -413,7 +413,7 @@ e. The host waits until the output of each iteration is read back to the host.
 1. Change your working directory to `modules/module_02/build/generic_buffer`.
 
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/generic_buffer
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/generic_buffer
     ```
    
 2. Run the following commands to look at Timeline Trace report.
@@ -449,7 +449,7 @@ Because the total compute is split into multiple iterations, you can start post-
 1. Change your working directory to `modules/module_02/reference_files`.
 
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/reference_files
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/reference_files
     ```
 
 2. Open `run_sw_overlap.cpp` file with a file editor.
@@ -510,7 +510,7 @@ b. Block the host only if the hash function of the words are still not computed 
 1. Go to the `modules/module_02/makefile` directory and run the `make` command.
 
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
     make run STEP=sw_overlap ITER=16 SOLUTION=1
     ```
 
@@ -528,7 +528,7 @@ b. Block the host only if the hash function of the words are still not computed 
 1. Change your working directory to `modules/module_02/build/sw_overlap`.
 
     ```bash
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/sw_overlap
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/build/sw_overlap
     ```
    
 2. Run the following commands to view the Timeline Trace report.

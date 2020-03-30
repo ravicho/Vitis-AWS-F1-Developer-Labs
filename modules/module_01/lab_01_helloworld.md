@@ -20,9 +20,9 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 1.  Source the Vitis environment  
 
     ```bash
-    cd ~/aws-fpga
+    cd $AWS_FPGA_REPO_DIR/aws-fpga
     source vitis_setup.sh
-    cd ~
+    cd $AWS_FPGA_REPO_DIR/
     ```
 	*Note: the vitis_setup.sh script might generate warning messages, but these can be safely ignored.*
 
@@ -30,7 +30,7 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 
     ```bash
     # Go to the lab directory
-    cd ~/Vitis-AWS-F1-Developer-Labs/modules/module_01/helloworld
+    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/helloworld
 
     # Compile the host application (./helloworld)
     make compile_host
@@ -45,9 +45,9 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 1. Execute the host application with the precompiled FPGA binary on the F1 instance.
 
     ```bash
-    source ~/aws-fpga/vitis_runtime_setup.sh 
-    make run TARGET=hw
-    ```
+    source $AWS_FPGA_REPO_DIR/aws-fpga/vitis_runtime_setup.sh 
+	make run TARGET=hw
+	```
 
 1. The host application executes using the vector_addition kernel running in the FPGA and produces the following results:
 

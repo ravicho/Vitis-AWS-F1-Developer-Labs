@@ -30,17 +30,16 @@ Before starting this lab, perform a fresh reinstall of the AWS EC2 FPGA Developm
 
 ```bash  
 # Install the AWS EC2 FPGA Development Kit
-cd ~
-git clone https://github.com/aws/aws-fpga.git
-cd aws-fpga                                   
-source sdaccel_setup.sh
+cd $AWS_FPGA_REPO_DIR
+git clone https://github.com/aws/aws-fpga.git  
+cd $AWS_FPGA_REPO_DIR/aws-fpga                                         
+source vitis_setup.sh
 
-# Download the SDAccel F1 Developer Labs
-cd ~
-rm -rf SDAccel-AWS-F1-Developer-Labs
-git clone https://github.com/Xilinx/SDAccel-AWS-F1-Developer-Labs
+# Download the Vitis F1 Developer Labs
+cd $AWS_FPGA_REPO_DIR/
+rm -rf Vitis-AWS-F1-Developer-Labs
+git clone https://github.com/Xilinx/Vitis-AWS-F1-Developer-Labs.git Vitis-AWS-F1-Developer-Labs
 ```
-
 
 
 ## ffmpeg plugin setup
