@@ -201,13 +201,14 @@ For the purposes of this lab, we have implemented the FPGA accelerator with an 8
 2. The output is as follows:
 
    ```
-  -------------------------------------------------------------------------
-  Executed FPGA accelerated version  |   539.5893 ms   ( FPGA 513.354 ms )
-  Executed Software-Only version     |   3935.1710 ms
-  -------------------------------------------------------------------------
-  Verification: PASS
+   -------------------------------------------------------------------------
+   Executed FPGA accelerated version  |   539.5893 ms   ( FPGA 513.354 ms )
+   Executed Software-Only version     |   3935.1710 ms
+   -------------------------------------------------------------------------
+   
+   Verification: PASS
    ```
-
+  
 Throughput = Total data/Total time = 1.39 GB/539.58ms = 2.57 GB/s
 
 You can see that by efficiently leveraging FPGA acceleration, the throughput of the application has increased by a factor of 7.  
