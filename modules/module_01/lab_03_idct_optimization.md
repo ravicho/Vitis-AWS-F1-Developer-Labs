@@ -7,14 +7,14 @@ Please note that although the entire lab is performed on an F1 instance, only th
 If you have closed the terminal window at the end of the previous lab, open a new one and go back to the project folder:
 
 ```bash
-cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
 ```
 
 ### Optimizing the IDCT kernel
 
 Remember when we Looked at the **HLS Report**, we identified that the read, execute and write functions of the **krnl_idct_dataflow** function have roughly the same latency and are executing sequentially. We still start by focusing on this performance aspect.
 
-1. Open **krnl_idct.cpp** file inside src directory.
+1. cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/src and Open **krnl_idct.cpp**
 
 1. Navigate to the **krnl_idct_dataflow** function.
 
@@ -32,12 +32,13 @@ Remember when we Looked at the **HLS Report**, we identified that the read, exec
 
 1. Clean the generated files before launching hardware emulation with updated source file.
     ```bash
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     make clean
     ```
 
 1. Rerun hardware emulation.
     ```bash
-    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     make run TARGET=hw_emu
     ```
 
@@ -70,7 +71,7 @@ These steps would take too long to complete during this lab, therefore a precomp
 
     ```bash
     # Go the lab folder
-    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
 
     # List contents of the ./xclbin directory to look for the .awsxclbin FPGA binary
     ls -la ./xclbin
@@ -102,9 +103,9 @@ These steps would take too long to complete during this lab, therefore a precomp
 1. Execute the accelerated application on F1 using the precompiled FPGA binary.
 
     ```bash
-    source $AWS_FPGA_REPO_DIR/aws-fpga/vitis_runtime_setup.sh 
-    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
-    source vitis_runtime_setup.sh 
+    source $AWS_FPGA_REPO_DIR/vitis_runtime_setup.sh 
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+ 
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
     exit
@@ -112,11 +113,12 @@ These steps would take too long to complete during this lab, therefore a precomp
 
 1. Here is the output of the above comamnd 
    ```
-   TEST PASSED
-   CPU Time:        2.41084 s
-   CPU Throughput:  212.374 MB/s
-   FPGA Time:       1.35336 s
-   FPGA Throughput: 378.319 MB/s
+    TEST PASSED
+    CPU Time:        2.39771 s
+    CPU Throughput:  213.537 MB/s
+    FPGA Time:       0.464535 s
+    FPGA Throughput: 1102.18 MB/s
+
    ```
 
 Note the performance difference between the IDCT running on the CPU and on the FPGA. FPGA s about 5x faster than running on CPU. 
@@ -127,6 +129,10 @@ Note the performance difference between the IDCT running on the CPU and on the F
 For optimal performance both the hardware and software components of the application need to be optimized. This next sections shows how the **software pipelining** technique can be used to overlap transactions from the host to the kernels and thereby improve overall system throughput.
 
 1. Return to the project folder in terminal window.
+
+   ```bash
+   cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/src
+   ```
 
 1. Open **idct.cpp** file.  
 
@@ -174,7 +180,7 @@ For optimal performance both the hardware and software components of the applica
 	- By increasing the value of the **NUM_SCHED** macro, we increase the depth of the event queue and enable more blocks to be enqueued for processing. This will result in the write, run and read tasks to overlap and allow the kernel to execute continuously.
 	- This technique is called **software pipelining**.
 
-1. Modify line 153 to increase the value of **NUM_SCHED** to 6 as follows:
+1. Modify line 217 to increase the value of **NUM_SCHED** to 6 as follows:
     ```
     #define NUM_SCHED 6
     ```
@@ -208,18 +214,20 @@ The next step is to confirm these results by running on the FPGA attached to the
 1. Execute the accelerated application on F1 using the precompiled FPGA binary.
     
     ```bash
-    source $AWS_FPGA_REPO_DIR/aws-fpga/vitis_runtime_setup.sh 
-    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    source $AWS_FPGA_REPO_DIR/vitis_runtime_setup.sh 
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     # Execute the host application with the .awsxclbin FPGA binary
+    ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
+
     ```
-    
+
 1. Here is the output of the above comamnd 
    ```
-   TEST PASSED
-   CPU Time:        2.40326 s
-   CPU Throughput:  213.044 MB/s
-   FPGA Time:       0.587663 s
-   FPGA Throughput: 871.248 MB/s
+    TEST PASSED
+    CPU Time:        2.4055 s
+    CPU Throughput:  212.846 MB/s
+    FPGA Time:       0.269234 s
+    FPGA Throughput: 1901.69 MB/s
 
    ```
    Note the performance difference between the IDCT running on the CPU and on the FPGA. FPGA s about 10x faster than running on CPU. Note as well the performance difference with the previous run on F1. Using exactly the same FPGA binary but an optimized host application, the overall performance is significantly improved.

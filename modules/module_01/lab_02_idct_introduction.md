@@ -84,7 +84,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 
 1. Run below commands in the terminal window.
     ```bash
-    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     make run TARGET=sw_emu
     ```
     This will run through software emulation and print out messages as shown in below to indicate the process finishes successfully.
@@ -98,7 +98,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 
 1. After software emulation finishes successfully, you can move forward to run the design in hardware emulation. The corresponding command is:
     ```bash
-    $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     make run TARGET=hw_emu
     ```
 
@@ -127,7 +127,8 @@ After the emulation run completes, an profile_summary_hw_emu.csv file is generat
 
 Open the generated profile summary report generated
 ```
-vitis_analyzer profile_summary_hw_emu
+cd ./build/
+vitis_analyzer profile_summary_hw_emu.csv
 ```
 
   ![](../../images/module_01/lab_02_idct/HWProfile.PNG)
@@ -156,11 +157,11 @@ The Vitis v++ compiler also generates **HLS Reports** for each kernel. **HLS Rep
 
 1. Locate the HLS reports:
 ```
-$AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
 find . -name "*_csynth.rpt"
 ```
 
-2. Open the **krnl_idct_dataflow_csynth.rpt** file, scroll to the **Performance Estimates** section, locate the **Latency (clock cycles)**  summary table and note the following performance numbers:
+2. Open the **./build/reports/krnl_idct.hw_emu/hls_reports/krnl_idct_csynth.rpt** file, scroll to the **Performance Estimates** section, locate the **Latency (clock cycles)**  summary table and note the following performance numbers:
 
   - Latency (min/max):
   - Interval (min/max):
