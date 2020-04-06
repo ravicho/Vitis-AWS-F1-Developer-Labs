@@ -17,7 +17,8 @@ The algorithm can be divided in two sections:
 1. Navigate to the `cpu_src` directory and run the following command.
 
     ```bash 
-    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/cpu_src
+    export PROJ_DATA=/home/centos/src/project_data
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_02/cpu_src
     make run
     ```
 
@@ -193,21 +194,21 @@ For the purposes of this lab, we have implemented the FPGA accelerator with an 8
 1. Run the following make command for running optimized application on FPGA
 
    ```bash
-   source $AWS_FPGA_REPO_DIR/aws-fpga/vitis_runtime_setup.sh
+   source $PROJ_DATA/aws-fpga/vitis_runtime_setup.sh
    make run_fpga
    ```
 
 2. The output is as follows:
 
    ```
-   --------------------------------------------------------------------
-    Executed FPGA accelerated version  |   552.5344 ms   ( FPGA 528.744 ms )
-    Executed Software-Only version     |   3864.4070 ms
-   --------------------------------------------------------------------
-    Verification: PASS
+  -------------------------------------------------------------------------
+  Executed FPGA accelerated version  |   539.5893 ms   ( FPGA 513.354 ms )
+  Executed Software-Only version     |   3935.1710 ms
+  -------------------------------------------------------------------------
+  Verification: PASS
    ```
 
-Throughput = Total data/Total time = 1.39 GB/552.534ms = 2.516 GB/s
+Throughput = Total data/Total time = 1.39 GB/539.58ms = 2.57 GB/s
 
 You can see that by efficiently leveraging FPGA acceleration, the throughput of the application has increased by a factor of 7.  
 

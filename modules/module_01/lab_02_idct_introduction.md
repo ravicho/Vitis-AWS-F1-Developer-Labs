@@ -20,7 +20,8 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 1.  Go to design folder and investigate the files.
     ```bash
     # Go to the lab directory
-    cd $AWS_FPGA_REPO_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+    export PROJ_DATA=/home/centos/src/project_data/
+    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     ls
     ```
 	  The `src` folder contains the kernel source file and host code. The `Makefile` is provided for design compilation and execution. Let's open up the make file and take a look at its contents.

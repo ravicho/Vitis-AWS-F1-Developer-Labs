@@ -29,6 +29,7 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 
     ```bash
     # Go to the lab directory
+    export PROJ_DATA=/home/centos/src/project_data/
     cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/helloworld
 
     # Compile the host application (./helloworld)

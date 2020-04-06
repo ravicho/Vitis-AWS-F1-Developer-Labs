@@ -7,6 +7,7 @@ Please note that although the entire lab is performed on an F1 instance, only th
 If you have closed the terminal window at the end of the previous lab, open a new one and go back to the project folder:
 
 ```bash
+export PROJ_DATA=/home/centos/src/project_data/
 cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
 ```
 
