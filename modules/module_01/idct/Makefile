@@ -100,7 +100,11 @@ $(BUILD_DIR)/$(EMCONFIG_FILE):
 
 ## build the design without running host application
 
+ifeq ($(TARGET), hw)
+build: $(BUILD_DIR)/$(HOST_EXE) 
+else
 build: $(BUILD_DIR)/$(HOST_EXE) $(BUILD_DIR)/$(XCLBIN) $(BUILD_DIR)/$(EMCONFIG_FILE)
+endif
 
 ## build the design and then run host application
 
