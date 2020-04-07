@@ -30,7 +30,7 @@ make build TARGET=hw STEP=[baseline/localbuf/fixedpoint/dataflow/multicu] SOLUTI
 2. Create awsxclbin file for F1 configuration.
 
 ```
-$SDACCEL_DIR/tools/create_sdaccel_afi.sh -xclbin=<input_xilinx_fpga_binary_xclbin_filename>
+$AWS_FPGA_REPO_DIR/tools/create_vitis_afi.sh -xclbin=<input_xilinx_fpga_binary_xclbin_filename>
 		-o=<output_aws_fpga_binary_awsxclbin_filename_root> -s3_bucket=<bucket-name> -s3_dcp_key=<dcp-folder-name> -s3_logs_key=<logs-folder-name>
 ```
 
@@ -54,20 +54,11 @@ If the state is shown as 'available', it indicates AFI creation is completed.
 
 ```
 sudo sh
-# Source the SDAccel runtime environment
-source /opt/xilinx/xrt/setup.sh
-# Execute the host application with the .awsxclbin FPGA binary
+# Source the Vitis runtime environment
+source $AWS_FPGA_REPO_DIR/aws-fpga/vitis_runtime_setup.sh 
+# Execute the host application with the .awsxclbin FPGA binary for Step "baseline"
 cd build/baseline
 ./convolution.exe  --kernel_name convolve_fpga ../../video.mp4 ./fpga_container_hw.awsxclbin
-```
-
-6. Generate reports.
-
-```
-mv ./sdaccel_profile_summary.csv sdaccel_profile_summary_hw.csv
-mv ./sdaccel_profile_summary.csv sdaccel_profile_summary_hw.csv
-cd ../../design/makefile
-make gen_report TARGET=hw STEP=baseline
 ```
 
 
@@ -143,7 +134,7 @@ The final performance benchmarking table displays as follows.
 
 Congratulations! You have successfully completed all the modules of this lab to convert a standard CPU-based application into an FPGA accelerated application, running with nearly 300X the throughput when running on the AWS F1 VU9P card. You set performance objectives, and then you employed a series of optimizations to achieve your objectives.
 
-1. You created an SDAccel application from a basic C application.
+1. You created an Vitis application from a basic C application.
 1. You familiarized yourself with the reports generated during software and hardware emulation.
 1. You explored various methods of optimizing your HLS kernel.
 1. You learned how to set an OpenCL API command queue to execute out-of-order for improved performance.
