@@ -65,6 +65,6 @@ This will clean the hardware emulation-generated files for the baseline version 
 
 </br>
 <hr/>
-<p align="center"><b><a href="../../README.md">Return to Getting Started Pathway</a> — <a href="./README.md">Return to Start of Tutorial</a></b></p>
+<p align="center"><b><a href="../../README.md">Return to Start of Tutorial</a> — <a href="./README.md">Return to Start of Tutorial</a></b></p>
 
 <p align="center"><sup>Copyright&copy; 2019 Xilinx</sup></p>
