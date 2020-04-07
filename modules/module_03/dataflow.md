@@ -17,8 +17,8 @@ While pipelining usually works at the instruction level, the SDx tool can also p
 
 Without using dataflow, `func_A`, `func_B`, and `func_C` are executed sequentially. With dataflow enabled, the three functions can overlap, which will reduce the total execution time.
 
->**TIP**: Refer to "Step 2 of Section "Methodology for Developing C/C++ Kernels" in the *Vitis Unified Software
-Platform Documentation* ([UG1393](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_2/ug1393-vitis-application-acceleration.pdf))
+>**TIP**: Refer to "Step 2" of Section *Methodology for Developing C/C++ Kernels* in the *Vitis Unified Software
+Platform Documentation* ([UG1393](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_2/ug1393-vitis-application-acceleration.pdf))*
 
 In this lab, in order to implement the functions in dataflow, you will first divide the original convolution function into three separate functions:
 

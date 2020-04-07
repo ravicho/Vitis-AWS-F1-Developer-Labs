@@ -48,7 +48,7 @@ Here is the summary of the generated golden output files.
 
 ## Profile the Application and Establish Performance Goals
 
-As stated in the *SDAccel Methodology Guide* ([UG1346](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2019_1/ug1346-sdaccel-methodology-guide.pdf)), you can use the `gprof` tool to profile the application, and identify potential functions for acceleration.
+You can use the `gprof` tool to profile the application, and identify potential functions for acceleration.
 
 1. Add the `-pg` option in the gcc command line. This is already done in the `Makefile`.
 2. Change directory into the `cpu_src` folder, and run `make` to generate the executable file.
@@ -84,7 +84,7 @@ As stated in the *SDAccel Methodology Guide* ([UG1346](https://www.xilinx.com/su
 
 ### Determine the Maximum Achievable Throughput
 
-In most FPGA-accelerated systems, the maximum achievable throughput is limited by the PCIe® bus. The PCIe performance is influenced by many different aspects, such as motherboard, drivers, targeted shell, and transfer sizes. The SDAccel environment provides a utility, `xbutil`, and you can run the `xbutil dmatest` command to measure the maximum PCIe bandwidth it can achieve. The throughput on your design target cannot exceed this upper limit.
+In most FPGA-accelerated systems, the maximum achievable throughput is limited by the PCIe® bus. The PCIe performance is influenced by many different aspects, such as motherboard, drivers, targeted shell, and transfer sizes. The Vitis environment provides a utility, `xbutil`, and you can run the `xbutil dmatest` command to measure the maximum PCIe bandwidth it can achieve. The throughput on your design target cannot exceed this upper limit.
 
 ### Establish Overall Acceleration Goals
 
@@ -96,7 +96,7 @@ This throughput goal is well within the bounds of maximum achievable throughput 
 
 ## Next Step
 
-You have identified the functions from the original application that are targets for acceleration, and established the performance goals. In the following labs, you will create a baseline of the original `convolve` function running in hardware, and perform a series of host and kernel code optimizations to meet your performance goals. You will begin by [creating an SDAccel application](./baseline.md) from the original application.
+You have identified the functions from the original application that are targets for acceleration, and established the performance goals. In the following labs, you will create a baseline of the original `convolve` function running in hardware, and perform a series of host and kernel code optimizations to meet your performance goals. You will begin by [creating an Vitis application](./baseline.md) from the original application.
 
 You will be using Hardware Emulation runs for measuring performance in each step. As part of the final step, you can run all these steps in hardware to demonstrate how the performance was improved at each step.
 

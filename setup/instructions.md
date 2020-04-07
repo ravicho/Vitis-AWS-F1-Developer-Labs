@@ -3,7 +3,7 @@
 
 ### Prerequisites
 
-In order to run the SDAccel AWS F1 Developer Labs, you will need the following:
+In order to run the Vitis AWS F1 Developer Labs, you will need the following:
 
 <details>
 <summary><strong>An AWS account</strong> <i>(expand for details)</i></summary><p>
@@ -97,5 +97,5 @@ You are now connected via RDP to your F1 instance running Centos 7 and the FPGA 
 ---------------------------------------
 
 <p align="center"><b>
-<a href="../README.md#module-1---introduction-to-the-sdaccel-flow">Start the SDAccel Developer Labs</a>
+<a href="../README.md#module-1---introduction-to-the-Vitis-flow">Start the Vitis Developer Labs</a>
 </b></p>
