@@ -17,17 +17,18 @@ Note the following data:
 * **Total Time**: Measured in hardware Timeline Trace report. For a fair comparison, this will include the data transfer and kernel execution time.
 * **Throughput**: Calculated by Total Data Processed(MB)/Total Time(s)
 
->**IMPORTANT**: Each of the steps in this lab compiles the hardware kernel and can take significant time to complete. To save your time, pre-built xclbin files are provided under /design/xclbin folder.
+>**IMPORTANT**: Generating of xclbin on hardware can take significant time to complete. For your convenience, pre-built xclbin files are provided under /design/xclbin folder.
 
 To run the labs on F1 hardware, you need to follow the steps listed below. The same steps are applied to all five labs, so we will not repeat it in every section.
 
-1. Build xclbin file for hardware run.
+1. Building xclbin file for hardware run.  This step is for your reference only and not required as awsxclbins are already available in xclbin directory
 
 ```
 make build TARGET=hw STEP=[baseline/localbuf/fixedpoint/dataflow/multicu] SOLUTION=1
 ```
 
-2. Create awsxclbin file for F1 configuration.
+2. Create awsxclbin file for F1 configuration. This step is for your reference only and not required as awsxclbins are already available in xclbin directory
+
 
 ```
 $AWS_FPGA_REPO_DIR/tools/create_vitis_afi.sh -xclbin=<input_xilinx_fpga_binary_xclbin_filename>
@@ -53,12 +54,15 @@ If the state is shown as 'available', it indicates AFI creation is completed.
 5. Run host application.
 
 ```
-sudo sh
+export PROJ_DATA=/home/centos/src/project_data
+cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_03/design/build/baseline
+
 # Source the Vitis runtime environment
-source $AWS_FPGA_REPO_DIR/aws-fpga/vitis_runtime_setup.sh 
+source $AWS_FPGA_REPO_DIR/vitis_runtime_setup.sh
+
 # Execute the host application with the .awsxclbin FPGA binary for Step "baseline"
-cd build/baseline
-./convolution.exe  --kernel_name convolve_fpga ../../video.mp4 ./fpga_container_hw.awsxclbin
+./convolution.exe  --kernel_name convolve_fpga ../../video.mp4 ../../xclbin/baseline/fpga_container_hw.awsxclbin
+
 ```
 
 
