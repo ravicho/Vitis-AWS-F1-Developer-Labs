@@ -12,7 +12,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 1.  Set up the Vitis environment.  
 
     ```bash
-    cd $AWS_FPGA_REPO_DIR/aws-fpga
+    cd $AWS_FPGA_REPO_DIR
     source Vitis_setup.sh
     ```
 	*Note: the Vitis_setup.sh script might generate warning messages, but these can be safely ignored.*

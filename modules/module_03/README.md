@@ -32,7 +32,6 @@ Before starting this lab, perform a fresh reinstall of the AWS EC2 FPGA Developm
 # Install the AWS EC2 FPGA Development Kit
 cd $AWS_FPGA_REPO_DIR
 git clone https://github.com/aws/aws-fpga.git  
-cd $AWS_FPGA_REPO_DIR/aws-fpga                                         
 source vitis_setup.sh
 
 # Download the Vitis F1 Developer Labs
