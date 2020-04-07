@@ -33,23 +33,14 @@ endif
 
 include common.mk
 
-setup:
-	if ! [ -f temp.txt ]; \
-  	then \
-		touch temp.txt; \
-		sudo -E -- bash -c 'source ~/aws-fpga/sdaccel_setup.sh'; \
-	fi;
-
-
-
 build: host
 
 run: build 
 	mkdir -p $(BUILDDIR)
 	cp runOnfpga_hw.awsxclbin $(BUILDDIR)
 	cp xrt.ini $(BUILDDIR)
-	cd $(BUILDDIR) && ./host 100000 $(ITER)
-	 
+	sudo -E -- bash -c 'fpga-clear-local-image -S 0'
+	source $(AWS_FPGA_REPO_DIR)/vitis_runtime_setup.sh && cd $(BUILDDIR) && ./host 100000 $(ITER) 
 
 help:
 	@echo  " "
