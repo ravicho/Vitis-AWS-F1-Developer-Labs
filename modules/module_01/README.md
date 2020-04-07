@@ -1,4 +1,4 @@
-## Module 1: Introduction to the SDAccel Flow
+## Module 1: Introduction to the Vitis Flow
 
 
 ### Preparing to run the labs
