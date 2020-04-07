@@ -17,8 +17,8 @@ The algorithm can be divided in two sections:
 1. Navigate to the `cpu_src` directory and run the following command.
 
     ```bash 
-    export PROJ_DATA=/home/centos/src/project_data
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_02/cpu_src
+    export LAB_WORK_DIR=/home/centos/src/project_data
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/cpu_src
     make run
     ```
 
@@ -194,7 +194,7 @@ For the purposes of this lab, we have implemented the FPGA accelerator with an 8
 1. Run the following make command for running optimized application on FPGA
 
    ```bash
-   source $PROJ_DATA/aws-fpga/vitis_runtime_setup.sh
+   source $LAB_WORK_DIR/aws-fpga/vitis_runtime_setup.sh
    make run_fpga
    ```
 

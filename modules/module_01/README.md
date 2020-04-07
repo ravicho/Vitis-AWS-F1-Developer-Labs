@@ -1,4 +1,4 @@
-## Module 1: Introduction to the SDAccel Flow
+## Module 1: Introduction to the Vitis Flow
 
 
 ### Preparing to run the labs
@@ -9,11 +9,11 @@ Before starting this module, perform a fresh reinstall of the AWS EC2 FPGA Devel
 # Install the AWS EC2 FPGA Development Kit
 cd $AWS_FPGA_REPO_DIR
 git clone https://github.com/aws/aws-fpga.git  
-cd $AWS_FPGA_REPO_DIR/aws-fpga                                         
+cd $AWS_FPGA_REPO_DIR                                     
 source vitis_setup.sh
 
 # Download the Vitis F1 Developer Labs
-export PROJ_DATA=/home/centos/src/project_data/
+export LAB_WORK_DIR=/home/centos/src/project_data/
 rm -rf Vitis-AWS-F1-Developer-Labs
 git clone https://github.com/Xilinx/Vitis-AWS-F1-Developer-Labs.git Vitis-AWS-F1-Developer-Labs
 ```
@@ -26,7 +26,7 @@ This module is divided in 3 labs. Since building FPGA binaries is not instantane
 You will get familiar with the steps involved in running a simple application on the F1 instance.
 
 1. **Using the Vitis v++ compiler to develop F1 accelerated applications** \
-You will use the XOCC command line flow to create and profile an F1 accelerator. The lab focuses on the Inverse Discrete Cosine Transform (IDCT), a compute intensive function used at the heart of all video codecs.
+You will use the v++ command line flow to create and profile an F1 accelerator. The lab focuses on the Inverse Discrete Cosine Transform (IDCT), a compute intensive function used at the heart of all video codecs.
 
 1. **Optimizing F1 applications** \
 You will continue the IDCT project started in the previous lab and learn how you can use the various reports provided by Vitis to guide the performance optimization process of your application.

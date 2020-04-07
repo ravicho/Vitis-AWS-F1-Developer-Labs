@@ -29,8 +29,8 @@ The "hello world" example is an OpenCL application with a simple vector-addition
 
     ```bash
     # Go to the lab directory
-    export PROJ_DATA=/home/centos/src/project_data/
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/helloworld
+    export LAB_WORK_DIR=/home/centos/src/project_data/
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/helloworld
 
     # Compile the host application (./helloworld)
     make compile_host
@@ -97,5 +97,5 @@ This concludes this first lab.
 ---------------------------------------
 
 <p align="center"><b>
-Start the next lab: <a href="lab_02_idct_introduction.md">Using the Vitis xocc compiler to develop F1 accelerated applications</a>
+Start the next lab: <a href="lab_02_idct_introduction.md">Using the Vitis v++ compiler to develop F1 accelerated applications</a>
 </b></p>
