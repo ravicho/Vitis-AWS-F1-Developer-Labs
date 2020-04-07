@@ -31,6 +31,8 @@ The accelerator is architected to process 8 words in parallel at 250Mhz. In the 
 1. Go to the `makefile` directory and run the make command.
 
     ```bash
+    export LAB_WORK_DIR=/home/centos/src/project_data/
+
     cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_02/makefile
     make run STEP=single_buffer SOLUTION=1
     ```
@@ -559,5 +561,5 @@ In the next module, you will create and optimize a two-dimensional convolution a
 ---------------------------------------
 
 <p align="center"><b>
-Start the second module: <a href="../module_03/README.md">Methodology for Optimizing Accelerated FPGA Applications</a>
+Start the Next module: <a href="../module_03/README.md">Methodology for Optimizing Accelerated FPGA Applications</a>
 </b></p>

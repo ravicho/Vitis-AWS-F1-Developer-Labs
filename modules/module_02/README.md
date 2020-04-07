@@ -21,6 +21,7 @@ git clone https://github.com/Xilinx/Vitis-AWS-F1-Developer-Labs.git Vitis-AWS-F1
 ### Setup for running application on FPGA
 ```bash
 # Source the Vitis runtime environment
+export LAB_WORK_DIR=/home/centos/src/project_data/
 source $AWS_FPGA_REPO_DIR/vitis_runtime_setup.sh 
 ```
 
