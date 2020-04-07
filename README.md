@@ -41,4 +41,4 @@ These labs are based on Vitis 2019.2 available with the FPGA Developer AMI v1.8.
 
 ---------------------------------------
 
-Visit the [Vities Developer Zone](https://www.xilinx.com/products/design-tools/software-zone/vitis.html) for more information about FPGA acceleration.
+Visit the [Vitis Developer Zone](https://www.xilinx.com/products/design-tools/software-zone/vitis.html) for more information about FPGA acceleration.
