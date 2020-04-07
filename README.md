@@ -37,7 +37,7 @@ These labs are based on Vitis 2019.2 available with the FPGA Developer AMI v1.8.
 * Begin with a baseline design of 2D convolution of an RGBA video and a set of filter coefficients using ffmpeg
 * Perform a series of optimization methods to achieve the performance target
 
-[**FOLLOW THE INSTRUCTIONS**](./modules/module_03/README.md)
+[**FOLLOW THE INSTRUCTIONS**](./modules/module_03/README.md) 
 
 ---------------------------------------
 
