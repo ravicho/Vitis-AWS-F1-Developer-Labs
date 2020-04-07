@@ -13,7 +13,7 @@ cd $AWS_FPGA_REPO_DIR
 source vitis_setup.sh
 
 # Download the Vitis F1 Developer Labs
-export PROJ_DATA=/home/centos/src/project_data/
+export LAB_WORK_DIR=/home/centos/src/project_data/
 rm -rf Vitis-AWS-F1-Developer-Labs
 git clone https://github.com/Xilinx/Vitis-AWS-F1-Developer-Labs.git Vitis-AWS-F1-Developer-Labs
 ```

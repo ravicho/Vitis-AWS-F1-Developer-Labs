@@ -20,8 +20,8 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 1.  Go to design folder and investigate the files.
     ```bash
     # Go to the lab directory
-    export PROJ_DATA=/home/centos/src/project_data/
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+    export LAB_WORK_DIR=/home/centos/src/project_data/
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     ls
     ```
 	  The `src` folder contains the kernel source file and host code. The `Makefile` is provided for design compilation and execution. Let's open up the make file and take a look at its contents.
@@ -85,7 +85,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 
 1. Run below commands in the terminal window.
     ```bash
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     make run TARGET=sw_emu
     ```
     This will run through software emulation and print out messages as shown in below to indicate the process finishes successfully.
@@ -99,7 +99,7 @@ The kernel used in this lab is an Inverse Discrete Cosine Transform (IDCT), a fu
 
 1. After software emulation finishes successfully, you can move forward to run the design in hardware emulation. The corresponding command is:
     ```bash
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
     make run TARGET=hw_emu
     ```
 
@@ -158,7 +158,7 @@ The Vitis v++ compiler also generates **HLS Reports** for each kernel. **HLS Rep
 
 1. Locate the HLS reports:
 ```
-cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
+cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/
 find . -name "*_csynth.rpt"
 ```
 

@@ -7,15 +7,15 @@ Please note that although the entire lab is performed on an F1 instance, only th
 If you have closed the terminal window at the end of the previous lab, open a new one and go back to the project folder:
 
 ```bash
-export PROJ_DATA=/home/centos/src/project_data/
-cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+export LAB_WORK_DIR=/home/centos/src/project_data/
+cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
 ```
 
 ### Optimizing the IDCT kernel
 
 Remember when we Looked at the **HLS Report**, we identified that the read, execute and write functions of the **krnl_idct_dataflow** function have roughly the same latency and are executing sequentially. We still start by focusing on this performance aspect.
 
-1. cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/src and Open **krnl_idct.cpp**
+1. cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/src and Open **krnl_idct.cpp**
 
 1. Navigate to the **krnl_idct_dataflow** function.
 
@@ -33,13 +33,13 @@ Remember when we Looked at the **HLS Report**, we identified that the read, exec
 
 1. Clean the generated files before launching hardware emulation with updated source file.
     ```bash
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     make clean
     ```
 
 1. Rerun hardware emulation.
     ```bash
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     make run TARGET=hw_emu
     ```
 
@@ -72,7 +72,7 @@ These steps would take too long to complete during this lab, therefore a precomp
 
     ```bash
     # Go the lab folder
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
 
     # List contents of the ./xclbin directory to look for the .awsxclbin FPGA binary
     ls -la ./xclbin
@@ -105,7 +105,7 @@ These steps would take too long to complete during this lab, therefore a precomp
 
     ```bash
     source $AWS_FPGA_REPO_DIR/vitis_runtime_setup.sh 
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
  
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
@@ -132,7 +132,7 @@ For optimal performance both the hardware and software components of the applica
 1. Return to the project folder in terminal window.
 
    ```bash
-   cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/src
+   cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct/src
    ```
 
 1. Open **idct.cpp** file.  
@@ -216,7 +216,7 @@ The next step is to confirm these results by running on the FPGA attached to the
     
     ```bash
     source $AWS_FPGA_REPO_DIR/vitis_runtime_setup.sh 
-    cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
+    cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_01/idct
     # Execute the host application with the .awsxclbin FPGA binary
     ./build/IDCT.exe ./xclbin/krnl_idct.hw.awsxclbin
 

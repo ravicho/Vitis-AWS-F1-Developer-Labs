@@ -54,8 +54,8 @@ If the state is shown as 'available', it indicates AFI creation is completed.
 5. Run host application.
 
 ```
-export PROJ_DATA=/home/centos/src/project_data
-cd $PROJ_DATA/Vitis-AWS-F1-Developer-Labs/modules/module_03/design/build/baseline
+export LAB_WORK_DIR=/home/centos/src/project_data
+cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_03/design/build/baseline
 
 # Source the Vitis runtime environment
 source $AWS_FPGA_REPO_DIR/vitis_runtime_setup.sh
