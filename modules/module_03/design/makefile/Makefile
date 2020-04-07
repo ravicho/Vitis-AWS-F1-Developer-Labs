@@ -16,10 +16,10 @@ help::
 	@echo  "  Command to generate profile summary report and application timeline report for specified target and step"
 	@echo  ""
 	@echo  "  make view_prof_report TARGET=<sw_emu/hw_emu/hw> STEP=<baseline/localbuf/fixedpoint/dataflow/multicu>"
-	@echo  "  Command to view profile summary report in SDAccel GUI"
+	@echo  "  Command to view profile summary report in Vitis_Analzyer GUI"
 	@echo  ""
 	@echo  "  make view_timeline_trace TARGET=<sw_emu/hw_emu/hw> STEP=<baseline/localbuf/fixedpoint/dataflow/multicu>"
-	@echo  "  Command to view application timeline report in SDAccel GUI"
+	@echo  "  Command to view application timeline report in SVitis_Analzyer GUI"
 	@echo  ""
 
 
@@ -172,11 +172,11 @@ $(BUILD_DIR)/$(HOST_EXE): $(HOST_SRC_CPP) $(HOST_SRC_H)
 
 $(BUILD_DIR)/$(XO_NAME).xo: $(KERNEL_SRC_CPP) $(KERNEL_SRC_H)
 	mkdir -p $(BUILD_DIR)
-	xocc $(XOCCFLAGS) -c -k convolve_fpga $(KERNEL_SRC_CPP) -o $@
+	v++ $(XOCCFLAGS) -c -k convolve_fpga $(KERNEL_SRC_CPP) -o $@
 
 $(BUILD_DIR)/$(XCLBIN): $(BUILD_DIR)/$(XO_NAME).xo
 	mkdir -p $(BUILD_DIR)
-	xocc $(XOCCFLAGS) -l -o $@ $(BUILD_DIR)/$(XO_NAME).xo
+	v++ $(XOCCFLAGS) -l -o $@ $(BUILD_DIR)/$(XO_NAME).xo
 
 ## Emulation Files Generation
 
@@ -205,11 +205,11 @@ run: build
 ifeq ($(TARGET), hw)
 	echo "************  Use Command Line to run application!  ************"
 else
-	cp sdaccel.ini $(BUILD_DIR);
+	cp xrt.ini $(BUILD_DIR);
 	cd $(BUILD_DIR) && XCL_EMULATION_MODE=$(TARGET) ./$(HOST_EXE)  --kernel_name convolve_fpga $(RUN_OPTS) ../../video.mp4 ./$(XCLBIN) ;
 
-	@cd $(BUILD_DIR) && mv ./sdaccel_profile_summary.csv sdaccel_profile_summary_$(TARGET).csv; 
-	@cd $(BUILD_DIR) && mv ./sdaccel_timeline_trace.csv sdaccel_timeline_trace_$(TARGET).csv;
+	@cd $(BUILD_DIR) && mv ./profile_summary.csv profile_summary_$(TARGET).csv; 
+	@cd $(BUILD_DIR) && mv ./timeline_trace.csv timeline_trace_$(TARGET).csv;
 ## compare the output result with golden result
 	@cmp $(BUILD_DIR)/output.mp4 ../$(GOLDEN_OUT); RETVAL=$$?; \
 	if [ $$RETVAL -eq \0 ];  then \
@@ -219,25 +219,6 @@ else
 	fi
 
 endif
-
-
-## generate profile summary and timeline trace reports
-## convert it to html, xprf and wdb formats after generation
-
-gen_report:
-	cd $(BUILD_DIR) && sdx_analyze profile -f html -i sdaccel_profile_summary_$(TARGET).csv; 
-	cd $(BUILD_DIR) && sdx_analyze trace -f wdb -i ./sdaccel_timeline_trace_$(TARGET).csv;
-
-## view html profile summary report in browser
-
-view_prof_report:
-	cd $(BUILD_DIR) && firefox ./sdaccel_profile_summary_$(TARGET).html &
-
-
-## view timeline trace report in SDx GUI
-
-view_timeline_trace:
-	cd $(BUILD_DIR) && sdx --report sdaccel_timeline_trace_$(TARGET).wdb ;
 
 ## Clean generated files
 
