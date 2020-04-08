@@ -189,10 +189,10 @@ Now you can compile and run the design, and you should see results similar to th
 1. Before running emulation, look at the Makefile again, and pay attention to line 150.
 
    ```
-   XOCCFLAGS += --nk convolve_fpga:$(CU_NUM)
+   VPPFLAGS += --nk convolve_fpga:$(CU_NUM)
    ```
 
-   Here the `xocc --nk` option is used to specify the number of kernel instances, or CUs, generated during the linking step of the build process. For this lab, CU_NUM is defined as 4.
+   Here the `v++ --nk` option is used to specify the number of kernel instances, or CUs, generated during the linking step of the build process. For this lab, CU_NUM is defined as 4.
 
 2. Go to the `makefile` directory.
 3. Use the following command to run hardware emulation.
