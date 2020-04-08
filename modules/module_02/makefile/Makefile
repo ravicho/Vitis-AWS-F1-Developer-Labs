@@ -39,8 +39,10 @@ run: build
 	mkdir -p $(BUILDDIR)
 	cp runOnfpga_hw.awsxclbin $(BUILDDIR)
 	cp xrt.ini $(BUILDDIR)
-	sudo -E -- bash -c 'fpga-clear-local-image -S 0'
-	source $(AWS_FPGA_REPO_DIR)/vitis_runtime_setup.sh && cd $(BUILDDIR) && ./host 100000 $(ITER) 
+	cd $(BUILDDIR) && ./host 100000 $(ITER) 
+
+#	sudo -E -- bash -c 'fpga-clear-local-image -S 0'
+#	source $(AWS_FPGA_REPO_DIR)/vitis_runtime_setup.sh && cd $(BUILDDIR) && ./host 100000 $(ITER) 
 
 help:
 	@echo  " "
