@@ -146,16 +146,16 @@ CXXLDFLAGS += -lxilinxopencl -lpthread -lrt
 
 ## Kernel Compiler and Linker Flags
 
-XOCCFLAGS := -t $(TARGET)
-XOCCFLAGS += --platform $(PLATFORM) -R 1
-XOCCFLAGS += --nk convolve_fpga:$(CU_NUM)
-XOCCFLAGS += -I$(KERNEL_SRC_H_DIR)
-XOCCFLAGS += --temp_dir $(BUILD_DIR)
-XOCCFLAGS += --log_dir $(BUILD_DIR)
-XOCCFLAGS += --profile_kernel data:all:all:all:all
+VPPFLAGS := -t $(TARGET)
+VPPFLAGS += --platform $(PLATFORM) -R 1
+VPPFLAGS += --nk convolve_fpga:$(CU_NUM)
+VPPFLAGS += -I$(KERNEL_SRC_H_DIR)
+VPPFLAGS += --temp_dir $(BUILD_DIR)
+VPPFLAGS += --log_dir $(BUILD_DIR)
+VPPFLAGS += --profile_kernel data:all:all:all:all
 
 ifeq ($(SOLUTION), 1)
-XOCCFLAGS += -DBASELINE_ADD -DHOST_CODE_OPT -DLOCAL_BUF_OPT -DDF_OPT -DFP_OPT
+VPPFLAGS += -DBASELINE_ADD -DHOST_CODE_OPT -DLOCAL_BUF_OPT -DDF_OPT -DFP_OPT
 endif
 
 
@@ -172,11 +172,11 @@ $(BUILD_DIR)/$(HOST_EXE): $(HOST_SRC_CPP) $(HOST_SRC_H)
 
 $(BUILD_DIR)/$(XO_NAME).xo: $(KERNEL_SRC_CPP) $(KERNEL_SRC_H)
 	mkdir -p $(BUILD_DIR)
-	v++ $(XOCCFLAGS) -c -k convolve_fpga $(KERNEL_SRC_CPP) -o $@
+	v++ $(VPPFLAGS) -c -k convolve_fpga $(KERNEL_SRC_CPP) -o $@
 
 $(BUILD_DIR)/$(XCLBIN): $(BUILD_DIR)/$(XO_NAME).xo
 	mkdir -p $(BUILD_DIR)
-	v++ $(XOCCFLAGS) -l -o $@ $(BUILD_DIR)/$(XO_NAME).xo
+	v++ $(VPPFLAGS) -l -o $@ $(BUILD_DIR)/$(XO_NAME).xo
 
 ## Emulation Files Generation
 
@@ -223,4 +223,4 @@ endif
 ## Clean generated files
 
 clean:
-	rm -rf $(BUILD_DIR)/$(XCLBIN) $(BUILD_DIR)/$(HOST_EXE) $(BUILD_DIR)/$(EMCONFIG_FILE) $(BUILD_DIR)/$(XO_NAME).xo $(BUILD_DIR)/*.ltx $(BUILD_DIR)/*_$(TARGET).log $(BUILD_DIR)/xocc_*_$(TARGET)_* $(BUILD_DIR)/_x* $(BUILD_DIR)/*.info $(BUILD_DIR)/convolve_fpga_$(TARGET)* $(BUILD_DIR)/link $(BUILD_DIR)/reports/convolve_fpga_$(TARGET)
+	rm -rf $(BUILD_DIR)/$(XCLBIN) $(BUILD_DIR)/$(HOST_EXE) $(BUILD_DIR)/$(EMCONFIG_FILE) $(BUILD_DIR)/$(XO_NAME).xo $(BUILD_DIR)/*.ltx $(BUILD_DIR)/*_$(TARGET).log $(BUILD_DIR)/v++_*_$(TARGET)_* $(BUILD_DIR)/_x* $(BUILD_DIR)/*.info $(BUILD_DIR)/convolve_fpga_$(TARGET)* $(BUILD_DIR)/link $(BUILD_DIR)/reports/convolve_fpga_$(TARGET)
