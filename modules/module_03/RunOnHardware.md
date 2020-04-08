@@ -21,39 +21,8 @@ Note the following data:
 
 To run the labs on F1 hardware, you need to follow the steps listed below. The same steps are applied to all five labs, so we will not repeat it in every section.
 
-1. Building xclbin file for hardware run.  This step is for your reference only and not required as awsxclbins are already available in xclbin directory
 
-```
-make build TARGET=hw STEP=[baseline/localbuf/fixedpoint/dataflow/multicu] SOLUTION=1
-```
-
-2. Create awsxclbin file for F1 configuration. This step is for your reference only and not required as awsxclbins are already available in xclbin directory
-
-
-```
-$AWS_FPGA_REPO_DIR/tools/create_vitis_afi.sh -xclbin=<input_xilinx_fpga_binary_xclbin_filename>
-		-o=<output_aws_fpga_binary_awsxclbin_filename_root> -s3_bucket=<bucket-name> -s3_dcp_key=<dcp-folder-name> -s3_logs_key=<logs-folder-name>
-```
-
-3. Step2 will create a *_afi_id.txt file, open this file and record the AFI Id.
-
-4. Check the AFI creation state using AFI ID as shown below.
-```
-aws ec2 describe-fpga-images --fpga-image-ids <AFI ID>
-```
-
-If the state is shown as 'available', it indicates AFI creation is completed.
-
-```
-"State": {
-              "Code": "available"
-        },
-
-```
-
-5. Run host application.
-
-```
+```bash
 export LAB_WORK_DIR=/home/centos/src/project_data
 cd $LAB_WORK_DIR/Vitis-AWS-F1-Developer-Labs/modules/module_03/design/build/baseline
 
