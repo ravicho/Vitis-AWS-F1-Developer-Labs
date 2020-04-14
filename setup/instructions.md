@@ -64,7 +64,7 @@ The following steps explain how to launch an EC2 F1 instance starting from the F
     ```
 1. An ASCII art message welcomes you to your instance
 
-#### Connect to your EC2 F1 from Windows Using PuTTy
+##### Connect to your EC2 F1 from Windows Using PuTTy
 Please follow the instruction provided on the following page to convert .pem file to .ppk and connect
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
 
