@@ -40,7 +40,7 @@ The following steps explain how to launch an EC2 F1 instance starting from the F
 1. Click **Continue** to proceed to the instance type selection step.
 1. Scroll down to select a **f1.2xlarge** instance
 1. At the top of the console, click on **6. Configure Security Groups** 
-1. Click **Add Rule**
+1. Click **Add Rule** ( Note : Add a new rule dont modify )
 1. Select **RDP** from the pulldown menu
 1. Select **My IP** from the **Source** pulldown
 1. Click **Review and Launch**. This brings up the instance launch review page.
@@ -57,12 +57,17 @@ The following steps explain how to launch an EC2 F1 instance starting from the F
 1. Copy or write down the **IPv4 Public IP** address of the instance.
 1. Using that IP address, connect to your instance using SSH (Linux) or PuTTY (Windows)
     ```sh
-    ssh -i <AWS key pairs.pem> -ssh centos@<IPv4 Public IP of EC2 instance> 22 
+    ssh -i <AWS key pairs.pem> centos@<IPv4 Public IP of EC2 instance> 22 
     ```
     ```sh
     putty -i <AWS key pairs.ppk> -ssh centos@<IPv4 Public IP of EC2 instance> 22 
     ```
 1. An ASCII art message welcomes you to your instance
+
+#### Connect to your EC2 F1 from Windows Using PuTTy
+Please follow the instruction provided on the following page to convert .pem file to .ppk and connect
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
+
 
 #### Installing a GUI Desktop
 
