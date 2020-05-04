@@ -14,6 +14,7 @@ source vitis_setup.sh
 
 # Download the Vitis F1 Developer Labs
 export LAB_WORK_DIR=/home/centos/src/project_data/
+cd $LAB_WORK_DIR
 rm -rf Vitis-AWS-F1-Developer-Labs
 git clone https://github.com/Xilinx/Vitis-AWS-F1-Developer-Labs.git Vitis-AWS-F1-Developer-Labs
 ```
